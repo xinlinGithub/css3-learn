@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>flex弹性盒子</title>
+    <style>
+      body {
+        background-color: green;
+      }
+      .wrap {
+        width: 600px;
+        height: 600px;
+        border: 1px solid black;
+        /* display: inline-flex; */
+        /* 行级盒子 */
+        display: flex;
+        /* 告诉父级 自己已经是弹性盒子了 子集就可以用了 */
+        flex-direction: column;
+        /* 把y轴设置成主轴 默认为x轴 这个得明确区分*/
+        flex-wrap: nowrap;
+        /* 超出部分换行 不伸缩 
+        默认值为nowrap(就是超出不换行 进行收缩 flex-shrink此时起作用)*/
+        justify-content: center;
+        /* 基于主轴做一个对齐方式 
+        space-around(向两边裂开 与盒子壁有一定间距 ）
+        space-between(向两边裂开 中间自适应）
+        center;向中间聚拢
+        flex-start: 向盒子上部聚拢 
+        flex-end向盒子底部聚拢
+        */
+        align-items: center;
+        /* 基于交叉轴的对齐方式
+          默认值：stretch；不设置大小则拉伸
+          flex-start;同上
+          flex-end:同上
+          baseline: 当交叉轴为有轴时较常用
+          stretch:交叉轴不设置宽度或高度时 默认拉伸 充满父级
+          center;向中间聚拢 实现单行居中好用
+         */
+        align-content:space-around;
+        /* 功能和align-items类似
+          只作用于多行 可实现多行居中 也是作用于交叉轴
+          可填的值于justify-content类似
+          默认值stretch 交叉轴不设大小时生效
+          但一般用align-items实现
+         */
+
+      }
+      .con {
+        /* flex-basis: 200px; 会覆盖所有的主轴大小 优先级较高
+        与width有一点不同 当内容区超出并且不换行时 就会大小随内容的增加而改变
+        只写basis时或basis大于width时 代表最小宽度（高度） 直到内容区达到父级为止
+        当basis小于width时 增加到width时则不再增加内容就会直接超出 width不再变化
+        没有加word-break时被撑开部分则不参与压缩；加了之后变为正常；
+         */
+        width: 100px;
+        height: 200px;
+        box-sizing: border-box;
+        padding: 2px;
+        /* border: 1px solid black; */
+        flex-grow: 0;
+        flex-shrink: 1;
+        background-color: #ccc;
+        /*超出部分按比例收缩 */
+      }
+      .con:first-of-type{
+        /* order: 3; */
+        /*  在子元素中的次序 默认值为0 */
+        /* align-self: flex-end; */
+        /* 优先级高于父级的align-items 低于align-content */
+        flex-grow: 0;
+        /* 默认值为0 */
+        /* 不设主轴方向上的大小时有效 
+        可以设置flex-basis来设置一个基准比例大小 
+        如此时主轴为column 总高度为300
+        每个项目的flex-basis设置为10这样就会有270的剩余
+        他们会按flex-grow的比例进行划分 以至于铺满整个高度
+        他会覆盖主轴上的大小如宽度 */
+        flex-shrink: 1;
+      }
+      .con:nth-of-type(2) {
+        /* order: 2; */
+        /* align-self: flex-start; */
+        flex-grow: 0;
+        height: 400px;
+        flex-shrink: 3; 
+        background-color: #666;
+        /* 当三个元素高度一致时 把多出的部分按比例压缩就行 
+          但当高度不一致时就不是按比例收缩了 会多出一个加权值
+          200*1 +200*1 + 400*3 = 1600；
+          200/1600 * 200 = 25;
+          200/1600 * 200 = 25;
+          400 * 3/ 1600 * 200 = 150;
+        */
+      }
+      .wrap{
+        flex-direction: row;
+      }
+      .con1{
+        flex-basis: 100px;
+        width: 200px;
+        height: 200px;
+        /* border: 1px solid black; */
+        padding: 100px 0;
+        box-sizing: border-box;
+        background-color: #ccc;
+        /* flex-shrink: 0; */
+      }
+      .con1:nth-of-type(2) {
+        height: 400px;
+        background-color: black;
+        flex-shrink: 3;
+        /* 他实际上时按照内容区的大小在主轴上进行收缩的
+         有padding border box-sizing时不算他们的值
+          上面那个公式值按内容区算content
+          */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+        flex: 在原来的基础上加了一些新功能
+            display: flex; 设置之后 项目会在主轴方向上排列
+            父级设置 子集使用 盒子 项目(子集) 主轴(x轴) 交叉轴(y方向) 可以调
+            父级：display：flex; flex-direction; justify-content; align-items;
+              align-content; flex-wrap;
+            项目：align-self;order;flex-grow;flex-basis;flex-shrink;
+        flex可以合并写： flex: flex-grow flex-shrink flex-basis;
+        可以实现多个导航一个固定 另外几个不同比例去伸缩
+
+     -->
+    <div class="wrap">
+      <!-- <div class="con">1</div>
+      <div class="con">2</div>
+      <div class="con">3</div> -->
+      <!-- <div class="con">4</div> -->
+      <!-- <div class="con">4</div>
+      <div class="con">5</div>
+      <div class="con">6</div>
+      <div class="con">7</div>
+      <div class="con">8</div> -->
+      <div class="con1">asgfsagasgagsagagdgdshgdfhdfhghdfdfhdhgdsghsfhsdhfdhdf</div>
+      <div class="con1"></div>
+      <div class="con1"></div>
+    </div>
+    aaaaa
+  </body>
+</html>

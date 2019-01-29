@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .typist{
+            position: relative;
+            margin-left: 100px;
+            width: 1em;
+            font-size: 25px;
+            /* border: 1px solid black; */
+            white-space: nowrap;
+            overflow: hidden;
+            animation: change-write 7s steps(7, end) infinite;
+        }
+        .typist::after{
+            position: absolute;
+            right: 0;
+            top:0;
+            opacity: 1;
+            display: inline-block;
+            content: "";
+            height: 100%;
+            width: 2px;
+            background-color: black;
+            animation: change-light 1s steps(1, end) infinite;            
+        }
+        @keyframes change-light {
+            0%{
+                opacity: 1;
+            }
+            50%{
+                opacity: 0;
+            }
+            100%{
+                opacity: 1;
+            }
+        }
+        @keyframes change-write {
+            0%{
+                width: 0em;
+            }
+            100%{
+                width: 7em;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+         <!-- 实现三个功能：
+        打字效果；字一个一个的出来 也有光标效果
+        钟表效果；（秒针，分针）；
+        跑马效果；高100， 2400宽 共12 个；
+    -->
+    <!-- 打字效果： -->
+    <div class="typist">邓哥肾贼虚！</div>
+    <div class="clock">
+        
+    </div>
+</body>
+</html>

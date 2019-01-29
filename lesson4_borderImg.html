@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>borderImage</title>
+    <style>
+        body{
+            background-color: green;
+        }
+        div{
+            position: absolute;
+            top: calc(50% - 50px);
+            left: calc(50% - 50px);
+            width: 100px;
+            height: 100px;
+            border: 20px solid black;
+            border-image-source: linear-gradient(red,black);
+            border-image-slice: 20;
+            border-image-outset: 100px;
+            /* 背景图片往外拉伸！一般不用 */
+            border-image-width: 100px;
+            /* 背景图片的宽度 一般不用 填数字相当于是几倍 填auto是那slice的值+px */
+            border-image-repeat: round;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        border-image:必须有
+            border-image-slice: 有1到4个值. 10 10 10 10；上右下左切割填充背景 fill是内容区填充 一般不用
+                                只能填数或%数不能加px; 不加则默认100% 这样只切割四个角；只能填补四个角 
+            border-image-width; 
+            border-image-repeat;最多填两个值 切割尺寸一定弄好 让美工弄好
+             stretch(中间部分拉伸) repeat(中间内容平铺 不会与四个角一致) round(平均分和四个角形状一样) space(到一定程度在拉伸)
+            border-image-outset;
+            border-image-source;
+            border-image: source slice repeat; 可以连写
+
+     -->
+    <div></div>
+
+</body>
+</html>

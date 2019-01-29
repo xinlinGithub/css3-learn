@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>background</title>
+    <style>
+        body{
+            background-color: green;
+        }
+        div:not(.con):not(.con1):not(.con2){
+            position: absolute;
+            left: calc(50% - 100px);
+            top: calc(50% - 100px);
+            width: 200px;
+            height: 200px;
+            border: 20px solid blue;
+            padding: 20px;
+            background-color: blueviolet;
+            background-image: url("./hjh.jpg"), url("./timg.jpg");
+            /* 当地一张展示不出来时 就加载第二张图片 容错机制 第二张必须快才行 */
+            /* background-size: 100px 200px, 100px 200px; */
+            /* 两个图片要写两个大小 还得调整位置 */
+            background-repeat: no-repeat;
+            background-origin: content-box;
+            background-position: 0px 0px;
+            background-clip: padding-box;
+            /* 100%/center/top/20 */
+        }
+        .con{
+            position: absolute;
+            left: calc(50% - 100px);
+            top: calc(50% - 100px);
+            width: 200px;
+            height: 200px;
+            font-size: 50px;
+            line-height: 200px;
+            text-align: center;
+            border: 1px solid #fff;
+            font-weight: 700;
+            background-image: url("./hjh.jpg");
+            background-position: 0px 0px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            /* 下方字段表示背景图片只在文字区域有效 固定写法 */
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+            transition: all .6s;
+            cursor: pointer;
+        }
+        .con:hover{
+            background-position: center center;
+            /* 做一些炫酷的动作 */
+        }
+        .con1{
+            position: absolute;
+            left: calc(50% - 200px);
+            top: calc(50% - 250px);
+            width: 400px;
+            height: 500px;
+            font-size: 50px;
+            border: 1px solid #fff;
+            overflow: scroll;
+            background-image: url("./hjh.jpg");
+            background-size: contain;
+            background-position: center center;
+            background-repeat: repeat;
+            background-attachment: local;
+            /* line-height: 200px;
+            text-align: center;
+            border: 1px solid #fff;
+            background-image: url("./hjh.jpg");
+            background-size: 50px 90px;
+            background-repeat: space round;
+            cursor: pointer; */
+        }
+        .con2{
+            position: absolute;
+            left: calc(50% - 200px);
+            top: calc(50% - 250px);
+            width: 200px;
+            height: 500px;
+            border: 1px solid #fff;
+            /* background-image: linear-gradient(180deg, red 30%, blue 60%, transparent); */
+            background-image: radial-gradient(circle farthest-side  at center center, red 100px,#ff0);
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+    background:closest-corner
+        background-image:url(),url()可以写多个url  可以是图片 也可以是渐变色
+                linear-gradient(方向, 颜色和比例)渐变色 
+                    方向：0deg(向上) 90deg(向右) 依次类推   to center top left ...
+                    red 20%/20px ....
+
+                radial-gradient(圆心位置、渐变位置，颜色和比例 )
+                circle  at center center(默认值)/50% 50%/50px 50px/
+                circle /closest-side(放射半径渐变到最近的边截止）/closest-corner（最近的角截止）/farthest-corner/farthest-side（最远的边截止）/
+
+        background-repeat:round平铺拉伸 space(不正好充满时 就显示出空隙) no-repeat
+                        round space 可以同时写
+        background-origin:border-box/padding-box默认值/content-box;从哪儿开始
+            他设置什么值 position就相对什么定位
+        background-position: center/50%/50px; center是背景图片在标签中的位置 而不是顶角移动到中间
+        background-clip:border-box/padding-box/content-box(默认值)从哪儿剪切掉
+        background-attachment:
+            scroll(默认值 背景位置相对于容器定位 容器不动就不动) 有内容且有滚动条时常用
+            local(相对于内容定位 position 就是相对于内容了) 
+            fixed(相对于视口进行定位 但不能跑到容器以外 position 也相对视口定位 有时会超出容器 就看不见了) 
+        background-size: 100% 100%(图片全部显示在容器内 不成比例则拉伸 会全部展示 可能会变形) 
+            cover(图片等比例放置但会充满图片 不会拉伸 按最短的那个边放置) 
+            contain图片等比例填充容器 会显示整个图片 可能会留白 还可以调具体的大小
+        rgb() rgba()
+        border不设置color 时，border会继承color得值 不写时为currentcolor为中转颜色 也是继承color
+    
+    -->
+    <!-- <div></div> -->
+    <!-- <div class="con">
+        content
+    </div> -->
+    <!-- <div class="con1">
+            歌曲原唱：林俊杰
+            填    词：李瑞洵
+            谱    曲：林俊杰
+            风到这里就是粘
+            粘住过客的思念
+            雨到这里缠成线
+            缠着我们留恋人世间
+            你在身边就是缘
+            缘分写在三圣石上面
+            爱有万分之一甜
+            宁愿我就葬在这一点
+            圈圈圆圆圈圈
+            天天年年天天 的我
+            深深看你的脸
+            生气的温柔
+            埋怨的温柔 的脸
+            不懂爱恨情愁煎熬的我们
+            都以为相爱就像风云的善变
+            相信爱一天 抵过永远
+            在这一刹那冻结了时间
+            不懂怎么表现温柔的我们
+            还以为殉情只是古<span>老</span>的传言
+            离愁能有多痛 痛有多浓
+            当梦被埋在江南烟雨中
+            心碎了才懂
+            圈圈圆圆圈圈
+            天天年年天天 的我
+            深深看你的脸
+            生气的温柔
+            埋怨的温柔 的脸
+            不懂爱恨情愁煎熬的我们
+            都以为相爱就像风云的善变
+            相信爱一天 抵过永远
+            在这一刹那冻结了时间
+            不懂怎么表现温柔的我们
+            还以为殉情只是古老的传言
+            离愁能有多痛 痛有多浓
+            当梦被埋在江南烟雨中
+            心碎了才懂
+    </div> -->
+    <div class="con2">
+
+    </div>
+</body>
+</html>

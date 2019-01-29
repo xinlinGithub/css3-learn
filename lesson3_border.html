@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>border</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        :root,
+        body{
+            height: 100%;
+            background-color: green;
+        }
+        .div1{
+            width: 200px;
+            height: 100px;
+            border: 10px solid black;
+            position: absolute;
+            left: calc(50% - 50px);
+            top: calc(50% - 50px);
+            /* 利用一个唯一支持的函数实现居中 50%相对于屏幕 */
+            /* border-radius: 50%; */
+            line-height: 100px;
+            /* border-radius: 20px 20px 30px 40px; */
+            /* border-bottom-right-radius: 40px 60px; */
+            /* border-bottom-left-radius: 40px 60px; */
+            /* 半圆 */
+            /* border-bottom-left-radius: 100px 100px; */
+            /* border-bottom-right-radius: 100px 100px; */
+            /* 特殊写法 */
+            border-radius: 20px 60px 60px 20px / 20px 60px 60px 20px;
+            /* 一一对应 20 20 、60 60、60 60 、20 20 */
+            /* x y 再画圆 */
+        }
+        .shadow{
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: calc(50% - 100px);
+            top: calc(50% - 100px);
+            border: 5px solid black;
+            line-height: 200px;
+            box-shadow: inset 5px 5px 5px 10px #ccc, 5px -5px 5px 10px black;
+            /* 可以写多个值 有叠加性 */
+        }
+        body{
+            background-color: #ccc;
+        }
+        .circle{
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            left: calc(50% - 150px);
+            top: calc(50% - 150px);
+            /* border: 1px solid #fff; */
+            border-radius: 50%;
+            box-shadow: inset 0px 0px 50px #fff,
+                        inset 10px 0px 80px #f0f,
+                        inset -10px 0px 80px #0ff,
+                        inset 10px 0px 300px #f0f,
+                        inset -10px 0px 300px #0FF,
+                        0px 0px 50px #fff,
+                        -10px 0px 80px #f0f,
+                        10px 0px 80px #0ff;
+                        /* 一层一层叠加 逐渐形成一种蒙砂的感觉 先设置的阴影在下面 一般做背景 背景颜色在最下面
+                            文字在最上面
+                        */
+        }
+        .sunny{
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            position: absolute;
+            left: calc(50% - 25px);
+            top: calc(50% - 25px);
+            border-radius: 50%;
+            box-shadow: 0 0 100px 50px #fff,
+                        0px 0px 250px 125px #ff0;
+                        /* 模糊值越大 越看不见 越淡 */
+        }
+        .square{
+            position: absolute;
+            left: calc(50% - 50px);
+            top: calc(50% - 50px);
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+            border-radius: 5px;
+            transition: all .3s ease-in-out;
+        }
+        
+        .square::after{
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
+            opacity: 0;
+            transition: all .3s ease-in-out;
+        }
+        .square:hover{
+            transform: scale(1.25, 1.25);
+        }
+        .square:hover::after{
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        border: 
+            border-radius;
+            box-shadow: inset/outset(默认) x y 模糊程度(由原来的位置向两边扩散) 在四个方向同时增加阴影的大小;
+            inset: 从上向内 从左向内 增加 负值 反过来增加;
+     -->
+    <!-- <div class="div1">
+        div1
+    </div> -->
+    <!-- <div class="shadow">
+        shadow 
+    </div> -->
+    <!-- <div class="circle">
+
+    </div> -->
+    <!-- <div class="sunny">
+
+    </div> -->
+    <div class="square"></div>
+</body>
+</html>

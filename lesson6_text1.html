@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>text</title>
+    <style>
+        body{
+            background-color: #0ff;
+            /* background-color: #000; */
+        }
+        .text{
+            position: absolute;
+            left: calc(50% - 300px);
+            top: calc(50% - 50px);
+            font-size: 70px;
+            width: 600px;
+            height: 100px;
+            color: #ddd;
+            border: 1px solid black;
+            /* text-shadow: 10px 10px 3px #000, -10px -10px 3px blue; */
+            /* 可以写多个 叠加效应 */
+            /* text-shadow: 1px 1px 0px #000, -1px -1px 0px #fff; */
+            /* 有立体感 浮雕效果*/
+            /* text-shadow: -1px -1px #000, 1px 1px #fff; */
+            /* 有镂刻效果 */
+            text-shadow: 0px 0px 10px #0f0,
+                        0px 0px 20px #0f0;
+            transition: all .4s;
+        }
+        .text::before{
+            content: "NO";
+            opacity: 0;
+            text-shadow: 0px 0px 10px #f00,
+                        0px 0px 20px #f10,
+                        0px 0px 30px #f20,
+                        0px -5px 5px #f10,
+                        0px -10px 10px #f20,
+                        0px -30px 30px #f20;
+            transition: all .4s;
+            /* 成火焰效果 越叠加越虚 这样效果更好 */
+            
+        }
+        .text:hover::before{
+            opacity: 1;
+        }
+        .text:hover{
+            text-shadow: 0px 0px 10px #f00,
+                        0px 0px 20px #f10;
+        }
+        .text1{
+            position: absolute;
+            left: calc(50% - 200px);
+            width: 400px;
+            height: 150px;
+            font-size: 100px;
+            color: #ccc;
+            text-align: center;
+            /* border: 1px solid black; */
+            background-position: -400px 10px;
+            background-image:  url("./eye.jpg");
+            background-repeat: no-repeat;
+            background-size: 400px 300px;
+            text-shadow: -10px -10px 3px rgba(255, 0, 255, .4),
+                        0px 0px 3px rgba(225, 225, 236, 0.5);
+            /* 这样阴影会跑到背景上去 因为clip后文字已经变成
+            背景了 阴影在文字下 在背景上 背景没有则文字也没有了 这样只能看到阴影*/
+            transition: all .6s;
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text1:hover{
+            background-position: 0 center;
+        }
+        .text2{
+            position: absolute;
+            left: calc(50% - 200px);
+            width: 400px;
+            height: 150px;
+            font-size: 50px;
+            color: #f10;
+            text-align: center;
+            margin-top: 200px;
+            text-shadow: 0 0 5px #f10 ,
+                        0 0 10px #f20,
+                        0 0 15px #f30;
+            transition: all .4s;
+        }
+        .text2:hover{
+            text-shadow: 10px -10px 10px #f00,
+                        10px 10px 10px #ff0,
+                        -10px 10px 10px #f0f,
+                        -10px -10px 10px #00f,
+                        15px -15px 15px #f00,
+                        15px 15px 15px #ff0,
+                        -15px 15px 20px #f0f,
+                        -15px -15px 30px #00f;
+        }
+        .text3{
+            position: absolute;
+            left: calc(50% - 300px);
+            width: 600px;
+            height: 150px;
+            font-size: 150px;
+            color: #f10;
+            text-align: center;
+            margin-top: 200px;
+
+            color: transparent;
+            font-family: simsun;
+            -webkit-text-stroke: 3px blue;
+            /* 给字体描边 这样会让字体镂空展示 */
+            /* 也可以自己下载字体包 一般为英文字体 因为中文太多了 难加载 */
+        }
+        @font-face{
+            font-family: "abc";
+            /* 引入字体包的名字 自己定 */
+            src: url("");
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        text:
+            text-shadow: x y blur color; 字体阴影
+            font-family: 字体包的名字；会存在一些兼容性的问题
+            -webkit-text-stroke: width color; 描边
+
+     -->
+    <!-- <div class="text">
+        textshadow
+    </div> -->
+    <!-- <div class="text1">
+        死神来了
+    </div> -->
+    <!-- <div class="text2">
+        COME WITH ME
+    </div> -->
+    <div class="text3">
+        淋淋淋淋
+    </div>
+</body>
+</html>

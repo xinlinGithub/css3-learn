@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>css3系列课程</title>
+    <style>
+        div{
+            padding: 0;
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+            margin: 100px auto;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <!-- 
+        css3介绍：承上启下 
+        圈里面的介绍： css2的升级版本 适应阅读英文文档 css3的兼容历史
+        upgrade version 在css2的基础上 不用js就可以实现动画 效率更高
+        历史：兼容性问题 什么情况下加前缀 什么情况下不加前缀
+        规范制定规则 浏览器去实现这些功能 大家都实现这个标准
+        -webkit- 谷歌先提出 规定使用得加前缀 各大浏览器实现后都加特殊性标记
+        -ms- ie的
+        -o- Opera欧朋的
+        -moz- 火狐的  
+        最后大家都实现后 就不加前缀了 就干净了 不存在兼容性问题 但存在一个发展历程
+        让一个属性在所有浏览器下都好用 一开始很麻烦 得考虑兼容
+        现在也有部分属性 还没有完全兼容 但方便很多了 因为有些属性只有特殊内核可以实现
+        autoprefixer 一个自动加前缀的插件
+        css3的一个辅助工具 可以很方便的编辑
+        预处理器： pre-processor less/sass  cssNext
+            sass代码最后会生成css文件 只是便于写 sass帮助生成 方便编写代码 和管理代码
+
+        后处理器： post-processor 代码写完后 自动补齐一些兼容性问题 后期处理
+        postCss 用js实现的css的抽象的语法树 AST(abstract Syntax Tree)
+        只实现前半部分 只实现语法树 剩下的有插件来做 充分体现的编程的扩展性
+        集成化工具 和插件共同使用  
+
+        cssNext: 实现了可编程的功能 刚出现的  css的发展方向 
+        用来实现一些未来实现的标准 但实际还是基于css3 最后处理 用他们提供的方法编写
+
+        后处理器 先写css代码 最后补齐 如果未来不需要兼容性 就不用补齐维护升级了 就直接撤掉后处理器就行了
+        但预处理器 是先规范标准 在写代码  未来不需要某些东西时 还得回来再改 不利于后期的维护
+        postCss是一个工具 可以加一些插件 实现某些功能 可加预处理器 和后处理器  他不能被叫做处理器
+        经常后处理器预处理器同时使用
+     -->
+</body>
+</html>

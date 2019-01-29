@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实现看小说时的滑屏功能</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .wrap{
+            position: relative;
+            width: 320px;
+            height: 500px;
+            border: 1px solid black;
+            margin: 50px auto;
+            overflow: hidden;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .wrap .content{
+            height: 500px;
+            transform: translateX(0);
+            white-space:normal;
+            /* column-rule-style: solid; */
+            column-count: 5;
+            column-width: 300px;
+            column-gap: 20px;
+            color: #fff;
+            font-size: 20px;
+            text-shadow: -2px -2px 0 #000;
+            background-image: url("./timg.jpg");
+            background-size: 320px 500px;
+            /* background-origin: left top; */
+            /* background-position: center center; */
+            background-attachment: scroll;
+            -webkit-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select:none;
+            user-select:none;
+            transition: all .5s;
+        }
+        .wrap .left, .wrap .right{
+            position: absolute;
+            top: calc(50% - 50px);
+            width: 50px;
+            height: 100px;
+            background-color: rgb(0,0,0);
+            color: #fff;
+            line-height: 100px;
+            text-align: center;
+            font-size: 50px;
+            font-weight: bold;
+            transition: all .3s;
+            opacity: 0;
+        }
+        /* .wrap:hover .left, .wrap:hover .right{
+            opacity: 0.7;
+        } */
+        .wrap .right{
+            right: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+            <div class="wrap">
+                    <div class="content">
+            我有点疼
+            　　但是我还能忍
+            　　是不是爱你
+            　　我还算有点天分
+            　　缓慢的时针
+            　　遗漏了天真
+            该怎么握住这温存
+            　　我一直等
+            　　等雨后能回温
+            　　我习惯适应
+            　　你语气的寒冷
+            　　午后的钟声
+            　　窗外的红尘
+            　　回忆又多了好几层
+            　　是我 演出细节
+            　　是你 即兴表演
+            　　我们没了底线
+            　　怎样延缓厌倦
+            　　递进的情绪请省略
+            　　是我 奋力纠缠
+            　　是你 肆无忌惮
+            　　维护者的喜欢
+            　　避免让自己再难堪
+            　　我有点疼
+            　　但是我还能忍
+            　　是不是爱你
+            　　我还算有点天分
+            　　缓慢的时针
+            　　遗漏了天真
+            　　该怎么握住这温存
+            　　我一直等
+            　　等雨后能回温
+            　　我习惯适应
+            　　你语气的寒冷
+            　　午后的钟声
+            　　窗外的红尘
+            　　回忆又多了好几层
+            　　是我 演出细节
+            　　是你 即兴表演
+            　　我们没了底线
+            　　怎样延缓厌倦
+            　　递进的情绪请省略
+            　　是我 奋力纠缠
+            　　是你 肆无忌惮
+            　　维护者的喜欢
+            　　避免让自己再难堪
+            　　是我 奋力纠缠
+            　　是你 肆无忌惮
+            　　维护者的喜欢
+            　　避免让自己再难堪
+            　　我有点疼
+            　　但是我还能忍
+            　　是不是爱你
+            　　我算还有点天分
+            　　爱的那么深
+            　　爱的那么认真
+
+            在浪漫之都你看到了蒙娜丽莎的微笑
+            《蒙娜丽莎的眼泪》曲谱
+            《蒙娜丽莎的眼泪》曲谱
+            你说这对你很好
+            这次旅行让你度过了感情的低潮
+            你觉得曾经爱的太苦
+            感谢我听你倾诉温柔的痛苦
+            在我的梦里因为可以和你相爱而骄傲
+            然而你都不知道
+            我期待在你爱的世界里变得重要
+            你要把爱人慢慢寻找
+            对你付出的一切
+            只换来我对自己苦苦的嘲笑
+            蒙娜丽莎她是谁
+            她是否也曾为爱争论错与对
+            为什么你总留给我失恋的泪水
+            却把你的感情付给别人去摧毁
+            蒙娜丽莎她是谁
+            她是否也曾为爱寻觅好几回
+            她的微笑那么神秘那么美
+            或许她也走过感情的千山万水
+            才发现爱你的人
+            不会让他的蒙娜丽莎流眼泪
+            在我的梦里因为可以和你相爱而骄傲
+            然而你都不知道
+            我期待在你爱的世界里变得重要
+            你要把爱人慢慢寻找
+            对你付出的一切
+            只换来我对自己苦苦的嘲笑
+            蒙娜丽莎她是谁
+            她是否也曾为爱争论错与对
+            为什么你总留给我失恋的泪水
+            却把你的感情付给别人去摧毁
+            蒙娜丽莎她是谁
+            她是否也曾为爱寻觅好几回
+            她的微笑那么神秘那么美
+            或许她也走过感情的千山万水
+            《蒙娜丽莎的眼泪》MV截图
+            《蒙娜丽莎的眼泪》MV截图(19张)
+            才发现爱你的人
+            不会让他的蒙娜丽莎流眼泪
+            蒙娜丽莎她是谁
+            她是否也曾为爱争论错与对
+            为什么你总留给我失恋的泪水
+            却把你的感情付给别人去摧毁
+            蒙娜丽莎她是谁
+            她是否也曾为爱寻觅好几回
+            她的微笑那么神秘那么美
+            或许她也走过感情的千山万水
+            才发现爱你的人
+            不会让他的蒙娜丽莎流眼泪
+                    </div>
+                    <div class="right">&gt;</div>
+                    <div class="left">&lt;</div>
+                </div>
+    </div>
+                
+    <script>
+        var con = document.getElementsByClassName("content")[0];
+        var wrap = document.getElementsByClassName("wrap")[0];
+        var left = document.getElementsByClassName("left")[0];
+        var right = document.getElementsByClassName("right")[0];
+        var flag = true;
+        var  i = 0;
+        var conAttr = getComputedStyle(con);
+        var count = parseInt(conAttr.columnCount);
+        var width = parseInt(conAttr.columnWidth);
+        var gap = parseInt(conAttr.columnGap);
+        var span = width + gap;
+        con.style.width = span * count + "px";
+        con.style.transform = "translateX(0px)";
+        wrap.onmousedown = function (e) {
+            if(flag == false) {
+                return;
+            }
+            flag = false;
+            left.style.opacity = 0;
+            right.style.opacity = 0;
+            var left1 = e.clientX;
+            var moveLeft = con.style.transform.split("(")[1].split("px")[0];
+            wrap.onmouseup = function (e) {
+                var left2 = e.clientX;
+                var temp;
+                if(left2 - left1 > 20 && i < 0) {
+                    i++;  //什么时候可以移动 什么时候不能移动 移到什么时候为止
+                }else if(left2 - left1 < -20 && i >= 2 - count && i + count >= 2){
+                    i--;
+                }else{
+                    if(i == 1 - count) {
+                        left.style.opacity = 0.7;
+                    }
+                    if(i == 0) {
+                        right.style.opacity = 0.7;
+                    }
+                    flag = true;
+                    return;
+                }
+                temp = i * span;
+                con.style.transform = "translateX(" + temp + "px)";
+                setTimeout(() => {
+                    flag = true;
+                }, 500);
+            }
+        }
+    </script>
+</body>
+</html>

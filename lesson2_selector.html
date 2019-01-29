@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      :root,
+      body {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        background-color: #ccc;
+      }
+      .box {
+        position: absolute;
+        top: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50%;
+        height: 50%;
+        border: 1px solid black;
+      }
+      .box .header {
+        width: 100%;
+        height: 20%;
+        text-align: center;
+        border-bottom: 1px solid black;
+      }
+      .box .header a {
+        display: inline-block;
+        text-decoration: none;
+        font-size: 20px;
+        margin: 5px;
+        margin-top: 10px;
+        border: 1px solid black;
+        padding: 5px;
+        border-radius: 5px;
+      }
+      .box .body {
+        width: 100%;
+        height: 80%;
+      }
+      .box .body div {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-size: 50px;
+        line-height: 100px;
+        font-weight: bold;
+      }
+      .box .body div:not(:target) {
+        display: none;
+      }
+      .box .body #red {
+        background-color: red;
+      }
+      .box .body #yellow {
+        background-color: yellow;
+      }
+      .box .body #green {
+        background-color: green;
+      }
+      div p:first-of-type {
+        background-color: red;
+      }
+      .lab input:checked + span{
+        background-color: green;
+      }
+      .lab input:checked + span::after{
+        content: "我是隔壁老王！";
+        color: #fff;
+      }
+      input:disabled{
+        border: 1px solid blue;
+        background-color: green;
+        box-shadow: 5px 5px 5px black;
+      }
+      input:enabled{
+        background-color: red;
+      }
+      input:read-only{
+        background-color: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+        被选择元素的状态;
+        :root : 选中根节点 相当于html 但在xml中就是xml的根节点 所以他比较规范
+        :empty: 选中空的节点 有空格也不行 但可以有注释
+        :target：选中被锚点选中的元素 可以不借助js来实现通过一个元素来操作另一个元素
+        :not(可嵌套伪类)： 没有什么的元素
+        被选中元素 在父元素中的位置：
+        :first-child :last-child :nth-child(n/2n+1/n+2) :nth-last-child(1) 操作所有子元素
+        :nth-of-type(n/2n/n+3) :nth-last-of-type :first-of-type :last-of-type 操作指定类型的子元素
+        :checked :enabled :disabled :read-only
+        :active 点击时有效果 松开后消失
+     -->
+    <div class="box">
+      <div class="header">
+        <a href="#red">red</a> <a href="#green">green</a>
+        <a href="#yellow">yellow</a>
+      </div>
+      <div class="body">
+        <div id="red">red</div>
+        <div id="green">green</div>
+        <div id="yellow">yellow</div>
+      </div>
+    </div>  
+
+    <div class="wrapper">
+      <span>span2</span>
+      <p>p1</p>
+      <span>span1</span>
+    </div>
+    <label class="lab">
+      一个小惊喜
+      <input type="checkbox">
+      <span></span>
+    </label>
+    <input type="text">
+    <input type="text" disabled>
+    <input type="text" readonly value="只能看，不能吃">
+  </body>
+</html>

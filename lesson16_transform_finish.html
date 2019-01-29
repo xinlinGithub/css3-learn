@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>transform-translate</title>
+    <style>
+        body{
+            perspective: 800px;
+            transform-style: preserve-3d;
+        }
+        div.wrap{
+            position: absolute;
+            left: 200px;
+            top: 200px;
+            width: 200px;
+            height: 200px;
+            background-image: url("hjh.jpg");
+            background-size: cover;
+            transform: rotateX(20deg) translateZ(-500px);
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        transform: 
+            translateX(); translateY(); translateZ(); translate3D(x, y,z);
+            参考对象是自身；
+        perspective: 景深 视觉的远近 相当于我们距离屏幕有真正的空间上的纵深 更有立体感；
+     -->
+     <div class="wrap">
+
+     </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>step</title>
+    <style>
+        .wrap,.wrap1{
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            animation: change-color 4s steps(1, start);
+        }
+        .wrap1{
+            animation: change-color 4s steps(1, end);
+            top: 200px;
+        }
+        @keyframes change-color {
+            0%{
+                left: 0;
+                background-color: red;
+            }
+            20%{
+                left: 100px;
+                background-color: yellow;
+            }
+            50%{
+                left: 200px;
+                background-color: green;
+            }
+            100%{
+                left: 300px;
+                background-color: blue;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+
+        steps: (步数, end/start) 有时可把一个大步骤 通过步数去拆解
+        每一步按多少步去跳变 不是渐变 步数越大越细腻 但仍是跳变
+        end(默认值): 丢掉最后一帧 保留当前帧状态 直到动画结束 最后一帧忽略了 可加forward来弥补最后一帧看不到
+        start: 丢掉第一帧 保留下一帧状态 直到动画结束 第一帧忽略了 不好弥补
+        steps(1, end) == step-end;
+        steps(1, start) == step-start;
+     -->
+    <div class="wrap">
+    </div>
+    <div class="wrap1"></div>
+    <!-- 实现三个功能：
+        打字效果；字一个一个的出来 也有光标效果
+        钟表效果；（秒针，分针）；
+        跑马效果；高100， 2400宽 共12 个；
+    -->
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+:root,
+body{
+    height: 100%;
+    background-color: green;
+}
+.header{
+    border-bottom: 5px solid black;
+    height: 70px;
+    text-align: center;
+    line-height: 70px;
+    margin: 0;
+}
+.sfq{
+    width: 50%;
+    border: 1px solid blue;
+    margin: 100px auto;
+}
+.sfq .item,.sfq .item + h4{
+    margin: 0;
+    border-bottom: 1px solid black;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    cursor: pointer;
+}
+.sfq .item:last-of-type{
+    border: none;
+}
+.sfq .item:last-of-type:active{
+    border-bottom: 1px solid black;
+}
+.sfq .item:first-of-type{
+    border-top: 1px solid black;
+}
+.sfq .item + h4{
+    display: none;
+}
+.sfq .item:active + h4{
+    display: block;
+}

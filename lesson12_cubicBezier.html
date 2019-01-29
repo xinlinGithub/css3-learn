@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>cubicBezier + animation</title>
+    <style>
+        .wrap{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            animation: move 1s ease-in infinite alternate both;
+        }
+        @keyframes move{
+            /* 相当于一个容器
+                百分数用来分割时间 
+                可以定义多个关键帧 但执行时只能执行一个
+                可以写from（0%） to(100%)
+             */
+            0% {
+                width: 100px;
+                background-color: yellow;
+            }
+            50% {
+                width: 200px;
+                background-color: blue;
+            }
+            100% {
+                width: 100px;
+                background-color: green;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        贝塞尔曲线 一般两个点 都在0,1之间
+        animation: 
+            1关键帧名
+            2动画时间
+            3运动函数 每一段的速度都用这个函数 并不是整个运动 不能实现每一段运动不同
+            4延迟时间
+            5运动次数 infinate 1 2 3
+            6运动方向 reverse 反过来运动 alternate 往返运动 alternate-reverse 
+            7animation-play-state:(控制运动状态 暂停paused 开始 不常用)
+            4最后停止位置 forwards(停在100%) backwards(停在0%); both(开始时为第一帧 结束时保留最后一帧)
+            
+     -->
+    <div class="wrap">
+
+    </div>
+    
+</body>
+</html>

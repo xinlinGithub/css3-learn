@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>过渡</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrap{
+            width: 600px;
+            height: 600px;
+            border: 1px solid black;
+            display: flex;
+            flex-direction: row;
+            align-content: space-between;
+            flex-wrap: wrap;
+        }
+        .footer{
+            width: 600px;
+            display: flex;
+            height: 10%;
+            border: 1px solid black;
+        }
+        .footer button{
+            flex: 1 1 auto;
+        }
+        .box{
+            position: relative;
+            left: 0;
+            top: 0;
+            right: auto;
+            width: 100px;
+            height: 100px;
+            box-sizing: border-box;
+            margin-left: 0px;
+            margin-top: 0px;
+            margin-right: auto;
+            background-color: #444;
+            /* opacity: 0.1; */
+            /* transition: width .3s ease-in-out,
+                        height .3s ease-in-out .3s,
+                        opacity .6s ease-in-out,
+                        left .3s ease-in-out .6s; */
+            /* 支持过渡的属性发生变化时产生过渡 */
+            /* 可以同时写多个 谁先发生过渡 过渡完谁先返回 */
+            transition: left .3s ease-in-out .3s,
+                        top .3s ease-in-out .3s,
+                        width .3s ease-in-out,
+                        height .3s ease-in-out;
+        }
+        /* .box:hover{
+            width: 200px;
+            height: 200px;
+            opacity: 1;
+            left: 100px;
+        } */
+    </style>
+</head>
+<body>
+    <!-- 
+        transition：过渡动画；
+            transition-property：选择过渡的属性；
+            transition-duration：过渡持续时间；
+            transition-timing-function: 过渡函数 形式；
+            transition-delay: 过渡延迟时间；
+     -->
+     <div class="wrap">
+        <div class="box">
+
+        </div>
+        <div class="footer">
+            <button class="right">right</button>
+            <button class="left" >left</button>
+            <button class="top" >top</button>
+            <button class="bottom" >bottom</button>
+        </div>
+     </div>
+    
+    
+    <script>
+        var wrap = document.getElementsByClassName("wrap")[0];
+        var box = document.getElementsByClassName("box")[0];
+        var right = document.getElementsByClassName("right")[0];
+        var left = document.getElementsByClassName("left")[0];
+        var top = document.getElementsByClassName("top")[0];
+        var bottom = document.getElementsByClassName("bottom")[0];
+        
+        var flag = false;
+        var i = 0;
+        right.onclick = function () {
+            if(flag) {
+                return;
+            }
+            flag = true;
+            wrap.style.flexDirection = "row";
+            box.style.left = box.offsetLeft + 100 + "px";
+            box.style.width = "200px";
+            i = 0;
+            setTimeout(() => {
+                box.style.width = "100px";
+                flag = false;
+            }, 300);
+        }
+        left.onclick = function () {
+            if(flag) {
+                return;
+            }
+            flag = true;
+            // if(i == 0) {
+            //     i++;
+            wrap.style.flexDirection = "row-reverse";
+            //     box.style.marginRight = wrap.offsetWidth - box.offsetLeft - box.offsetWidth -100  + "px";
+            // }
+            box.style.left = box.offsetLeft - 100 + "px";
+            box.style.width = "200px";
+            setTimeout(() => {
+                box.style.width = "100px";
+                flag = false;
+            }, 300);
+        }
+        top.onclick = function () {
+            if(flag) {
+                return;
+            }
+            flag = true;
+            box.style.top = box.offsetTop - 100 + "px";
+            box.style.height = "200px";
+            setTimeout(() => {
+                box.style.height = "100px";
+                flag = false;
+            }, 300);
+        }
+        bottom.onclick = function () {
+            if(flag) {
+                return;
+            }
+            flag = true;
+            box.style.top = box.offsetTop + 100 + "px";
+            box.style.height = "200px";
+            setTimeout(() => {
+                box.style.height = "100px";
+                flag = false;
+            }, 300);
+        }
+    </script>
+</body>
+</html>

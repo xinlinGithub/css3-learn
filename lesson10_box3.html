@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flex应用</title>
+    <style>
+        .wrap{
+            width: 300px;
+            height: 500px;
+            border: 1px solid black;
+            display: flex;
+            flex-wrap: nowrap;
+            /* 换行shrink不起作用 */
+            align-content: flex-start;
+        }
+        .wrap div{
+            /* flex: 0 1 auto; */
+            /* flex-shrink: 1; */
+            width: 100px;
+            height: 100px;
+            margin: 10px 10px;
+            background-color: #ccc;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+        /* 圣杯布局 flex 可以嵌套使用 
+            上下左右中 按比例布局
+        */
+        .wrapper{
+            resize: both;
+            overflow: hidden;
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+        }
+        .header,.footer,.left,.right{
+            flex: 0 0 20%;
+            border: 1px solid black;
+            box-sizing: border-box;
+        }
+        .contain{
+            flex: 1 1 auto;
+            display: flex;
+        }
+        .center{
+            flex: 1 1 auto;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <!-- <div>4</div>
+        <div>5</div>
+        <div>6</div> -->
+        <!-- 实现流式布局 不会触发bfc -->
+    </div>
+    <!-- 圣杯布局 -->
+    <div class="wrapper">
+        <div class="header">header</div>
+        <div class="contain">
+            <div class="left">left</div>
+            <div class="center">center</div>
+            <div class="right">right</div>
+        </div>
+        <div class="footer">footer</div>
+    </div>
+</body>
+</html>

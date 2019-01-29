@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>transform-rotate</title>
+    <style>
+        body{
+            perspective: 800px;
+            transform-style: preserve-3d;
+            transform-origin: 300px 450px;
+        }
+        @keyframes roun {
+            from{
+                transform: rotateZ(0deg);
+            }
+            to{
+                transform: rotateZ(360deg);
+            }
+        }
+        @keyframes change {
+            from{
+                transform: rotateZ(-45deg) rotateX(45deg);
+            }
+            to{
+                transform: rotateZ(45deg) rotateX(-45deg);
+            }
+        }
+        @keyframes _skew {
+            from{
+                transform: skew(45deg, 45deg);
+            }
+            to{
+                transform: skew(-45deg, -45deg);
+            }
+        }
+        div.wrap{
+            width: 200px;
+            height: 300px;
+            margin-top: 200px;
+            margin-left: 200px;
+            background-image: url("timg.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            transform-origin: 0 0;
+            /* transform: rotateY(90deg) rotateX(45deg); */
+            /* transform: rotateX(45deg) rotateY(90deg); */
+            /* transform: rotate3d(1,1,1,100deg); */
+
+            /* animation: roun 1s ease-in-out; */
+            /* animation: change .8s cubic-bezier(.5,0, .5, 1) alternate infinite; */
+            /* transform: rotateY(85deg)  scaleZ(2) rotateX(40deg); */
+            /*                      对后期有一定的影响 会使刻度发生 变化 */
+            transform: skew(45deg) translateY(-200px);
+            /* animation: _skew 4s cubic-bezier(0,0,1,1) alternate infinite; */
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        transform-style: preserve-3d;在父级上设置 增强3d效果
+        perspective：在父级上加  景深 增加一个视觉效果
+        transform-origin: center center; 相对于自己而言
+        transform: rotateX() rotateY() rotateZ() 
+                    正值为顺时针转 负值为逆时针转 
+                多个值一起写时 要考虑 第一步对坐标轴的影响 坐标轴会随着元素的变化而变化
+                所以写的时候要注重顺序 这点很重要 顺序不同会的到不同的结果
+                rotate3d(x,y,z, deg); 与分开写不一样 会根据x y z 的比值重新绘制成一个空间矢量方向
+                最后沿着这个方向去旋转 但一般不用 太难想象；
+        transform:
+            scale(x,y);在坐标轴上进行伸缩 到底伸缩的是什么
+            伸缩的是元素所在坐标轴的刻度 而不是直接变化大小 会对后面的操作有一定的影响
+            如scale(2,1) 在x 轴方向视觉上的200 代表真实的100；扩大2倍；
+            多个共同写会出现叠加现象 
+            所有伸缩过的scale都会一直保留在这个方向上的影响 不会随旋转而改变 但后期再有scale的话会再次在变化后的轴上产生影响
+
+            scaleZ();
+
+            skew();倾斜 且倾斜的是坐标轴 而且还被拉伸了 且不确定拉伸多少 会对后续的变化产生一定的影响 添加角度
+            skew(xdeg, ydeg); y轴倾斜x度 且会拉伸相应的轴的刻度 以保证高度视觉不变
+                            x轴倾斜y度 且会拉伸相应的轴的刻度 以保证宽度视觉不变
+                            拉伸之后 如果再平移100px 视觉上平移的还是100px 
+                            但实际平移的肯定大于100px;
+     -->
+    <div class="wrap">
+
+    </div>
+</body>
+</html>
