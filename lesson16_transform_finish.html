@@ -6,11 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>transform-translate</title>
     <style>
+        :root{
+            height: 100%;
+        }
         body{
             perspective: 800px;
+            /* 使空间变成3d空间 */
             transform-style: preserve-3d;
+            height: 100%;
         }
-        div.wrap{
+        /* div.wrap{
             position: absolute;
             left: 200px;
             top: 200px;
@@ -18,7 +23,80 @@
             height: 200px;
             background-image: url("hjh.jpg");
             background-size: cover;
-            transform: rotateX(20deg) translateZ(-500px);
+            transform: rotateX(20deg) translateZ(-100px);
+        } */
+        /* .wrap,
+        .wrap1,
+        .wrap2,
+        .wrap3,
+        .wrap4{
+            width: 200px;
+            height: 300px;
+            position: absolute;
+            top: 200px;
+            left: 100px;
+            background-image: url("hjh.jpg");
+            transform: rotateY(45deg);
+            background-size: cover;
+        }
+        .wrap1{
+            left: 300px;
+        }
+        .wrap2{
+            left: 500px;
+        }
+        .wrap3{
+            left: 700px;
+        }
+        .wrap4{
+            left: 900px;
+        } */
+        @keyframes round {
+            from{
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            to{
+                transform: rotateX(-360deg) rotateY(360deg);
+            }
+        }
+        div.wrap{
+            width: 200px;
+            height: 300px;
+            position: absolute;
+            top: 200px;
+            left: 200px;
+            background-color: orange;
+            transform: rotateX(0deg) rotateY(0deg);
+            transform-style: preserve-3d;
+            transform-origin: 100px 100px 100px;
+            animation: round 2s ease-in-out infinite ;
+        }
+        div.demo{
+            width: 200px;
+            height: 300px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background-image: url("hjh.jpg");
+            background-size: cover;
+            transform: translateZ(200px);
+        }
+        div.demo1,
+        div.demo2{
+            width: 200px;
+            height: 300px;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background-color: #ccc;
+        }
+        div.demo1{
+            transform-origin: left top;
+            transform: rotateY(-90deg);
+        }
+        div.demo2{
+            transform-origin: right top;
+            transform: rotateY(90deg);
         }
     </style>
 </head>
@@ -27,10 +105,35 @@
         transform: 
             translateX(); translateY(); translateZ(); translate3D(x, y,z);
             参考对象是自身；
-        perspective: 景深 视觉的远近 相当于我们距离屏幕有真正的空间上的纵深 更有立体感；
+        perspective: 
+            景深 添加到父级上 视觉的远近 相当于我们距离屏幕有真正的空间上的纵深 更有立体感；
+            相当于眼睛距离屏幕的距离 在屏幕上显示的是 元素在屏幕上的投影 
+            当元素就在屏幕上时则perspective对视图无影响 因为不管在哪儿看投影始终不变 
+            所以当有translateZ时 perspective才起效果 
+            当translateZ为正值时 就会越近越大 当为负值时就会越远越大 只是一个视角问题
+        注意点：perspective-origin: x y; 景深的相对方向
+        transform: perspective(800px) 要添加在前面;
+            写在每个元素的自身上 且不能调节perspective-origin 
+            当想让每个元素的景深效果一样时常用
+            景深是可以叠加的 有时更立体
+        transform-style：perserve-3d;浏览器把元素渲染成3d视图 那个元素想渲染成3d视图 就在那个元素上写
+        transform-origin: 可以写空间的轴 100px 100px 100px;相对于元素自身而言
      -->
+     <!-- <div class="wrap"></div>
+     <div class="wrap1"></div>
+     <div class="wrap2"></div>
+     <div class="wrap3"></div>
+     <div class="wrap4"></div> -->
      <div class="wrap">
-
+         <div class="demo"></div>
+         <div class="demo1"></div>
+         <div class="demo2"></div>
      </div>
+     <script>
+    //  document.body.onmousemove = (e) => {
+    //      document.body.style.perspectiveOrigin = `${e.pageX}px ${e.pageY}px`;
+    //  }
+     
+     </script>
 </body>
 </html>

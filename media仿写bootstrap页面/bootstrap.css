@@ -1,0 +1,520 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    color: #337ab7;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+body {
+    padding-top: 30px;
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+}
+
+.navbar {
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    border-width: 0 0 1px;
+    z-index: 1030;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    background-color: #222;
+    border-color: #080808;
+}
+
+/* 默认样式 */
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.navbar .container::after,
+.container .navbar-header::after,
+.container .navbar-collapse::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/* 中文网2 */
+
+.container .navbar-header {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+
+.container .navbar-header .navbar-brand {
+    color: #9d9d9d;
+    float: left;
+    height: 50px;
+    padding: 15px;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.container .navbar-header .navbar-brand:hover {
+    color: #fff;
+}
+
+.navbar-header .navbar-toggle {
+    position: relative;
+    float: right;
+    padding: 9px 10px;
+    margin: 8px 15px 8px 0;
+    background-color: transparent;
+    /* button会有默认的border所以最好设成透明 */
+    border: 1px solid transparent;
+    border-color: #333;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.navbar-header .navbar-toggle:hover {
+    background-color: #333;
+}
+
+.navbar-header .navbar-toggle .icon-bar {
+    background-color: #fff;
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+}
+
+.navbar-header .navbar-toggle .icon-bar+.icon-bar {
+    margin-top: 4px;
+}
+
+/* navbar-header的其余部分 */
+
+
+.navbar-collapse {
+    overflow-x: hidden;
+    border-top: 1px solid transparent;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+    display: none;
+}
+
+/* 当小于768时变为竖列 */
+
+.navbar-collapse.in {
+    max-height: 340px;
+    overflow-y: auto;
+}
+
+.navbar-collapse.in {
+    display: block;
+}
+
+.navbar-collapse .navbar-nav {
+    margin: 7.5px -15px;
+}
+
+.navbar .navbar-nav>li>a {
+    color: #9d9d9d;
+    line-height: 20px;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.navbar .navbar-nav>li>a:hover {
+    color: #fff;
+}
+
+.navbar .navbar-nav>li>a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+}
+
+/* masthead部分 */
+
+.masthead {
+    padding: 60px 0 80px;
+    color: #fff;
+    position: relative;
+    text-align: center;
+    text-shadow: 1 1px 3px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 0, 0, .075);
+    background: linear-gradient(45deg, #020031 0, #6d3353 100%);
+    box-shadow: inset 0 3px 7px rgba(0, 0, 0, .2), inset 0 -3px 7px rgba(0, 0, 0, .2);
+}
+
+.masthead .container {
+    position: relative;
+    z-index: 2;
+    max-width: 100%;
+}
+
+.masthead h1 {
+    font-size: 60px;
+    letter-spacing: -2px;
+    font-weight: 700;
+}
+
+.masthead h2 {
+    font-size: 18px;
+    font-weight: 200;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.masthead .masthead-button-links {
+    margin-top: 30px;
+    font-size: 40px;
+    font-weight: 200;
+    margin-bottom: 15px;
+}
+
+.masthead .btn {
+    display: inline-block;
+    /* 更有立体感 */
+    box-shadow: inset 0 -4px 0 #2a6496;
+    color: #fff;
+    padding: 13px 35px 17px;
+    transition: all .2s ease-in-out;
+    font-size: 18px;
+    border-radius: 6px;
+    background-color: #3371b7;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    user-select: none;
+    /* 不能选中 */
+}
+
+.masthead .btn:hover {
+    background-color: #286090;
+}
+
+.masthead .masthead-links li {
+    display: inline;
+    padding: 0 10px;
+    color: rgba(255, 255, 255, .25);
+}
+
+.masthead .masthead-links a {
+    background-color: transparent;
+    color: rgba(255, 255, 255, .5);
+    transition: all .2s ease-in-out;
+}
+
+.masthead .masthead-links a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* bc-social部分 */
+
+.bc-social {
+    padding: 15px 0;
+    text-align: center;
+    background-color: #f5f5f5;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.bc-social .bc-social-buttons {
+    margin-left: 0px;
+    margin-bottom: 0px;
+    padding-left: 0;
+}
+
+.bc-social .bc-social-buttons li {
+    display: inline-block;
+    color: #555;
+}
+
+.bc-social .bc-social-buttons li a {
+    color: inherit;
+}
+
+.bc-social .bc-social-buttons li:hover {
+    text-decoration: underline;
+}
+
+.bc-social .bc-social-buttons li .fa {
+    font-size: 18px;
+    margin-right: 3px;
+    display: inline-block;
+    text-rendering: auto;
+}
+
+.bc-social .bc-social-buttons li .fa-comments::before {
+    content: "\f086";
+}
+
+.bc-social .bc-social-buttons li+li::before {
+    padding: 0 10px;
+    color: #ccc;
+    content: "|";
+}
+
+/* container projects 部分 */
+
+.projects .page-header {
+    width: 60%;
+    text-align: center;
+    margin: 60px auto 40px;
+    font-weight: 200;
+    padding-bottom: 9px;
+    border-bottom: 1px solid #eee;
+}
+
+.projects .page-header h2 {
+    font-size: 42px;
+    letter-spacing: -1px;
+    margin: 20px 0px 10px;
+    font-weight: 500;
+}
+
+.projects .row {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.row .content {
+    position: relative;
+    min-height: 1px;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.projects .row .content .thumbnail {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    max-width: 310px;
+    margin-bottom: 30px;
+    padding: 4px;
+    border: 1px solid #ddd;
+    transition: border .2s ease-in-out;
+}
+
+.thumbnail a img {
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+}
+
+.thumbnail .caption {
+    height: 200px;
+    overflow-y: hidden;
+    color: #555;
+    padding: 9px;
+}
+
+.thumbnail .caption h3 {
+    font-size: 24px;
+    margin: 20px 0 10px 0;
+    font-weight: 500;
+}
+
+.thumbnail .caption h3 small {
+    font-size: 65%;
+    font-weight: 400;
+    color: #777;
+}
+
+/* footer部分 */
+
+.footer {
+    color: #777;
+    padding: 30px 0;
+    border-top: 1px solid #e5e5e5;
+    margin-top: 70px;
+}
+
+.footer h4 {
+    font-size: 18px;
+    margin: 10px 0px;
+    font-weight: 500;
+}
+
+.footer .footer-top p {
+    margin-bottom: 10px;
+}
+
+.footer .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.footer .row .content .about {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.footer .row .content .about>div {
+    height: 110px;
+    margin-bottom: 10px;
+    padding: 0 15px;
+}
+
+.footer .row .content .about>div.col-sm-3 {
+    flex: 3 0 80px;
+}
+
+.footer .row .content .about>div.col-sm-4 {
+    flex: 4 0 80px;
+}
+
+.footer .row .content .about>div.col-sm-2 {
+    flex: 2 0 80px;
+}
+
+.footer .row .content .about>div h4{
+    color: #563d7c;
+    font-size: 16px;
+    margin: 10px 0;
+    font-weight: 500;
+}
+.footer .row .content .about>div .list-unstyled{
+    margin-bottom: 10px;
+}
+.footer a{
+    color: #777 !important;
+}
+.footer .row .content .about a:hover {
+    text-decoration: underline;
+}
+.footer .footer-bottom{
+    font-size: 13px;
+    margin: 40px -15px 0;
+}
+.footer .footer-bottom .list-inline{
+    margin: 0 auto;
+    text-align: center;
+    font-size: 13px;
+}
+.footer .footer-bottom .list-inline li{
+    display: inline-block;
+}
+.footer .footer-bottom .list-inline li+li::before{
+    content: "|";
+    padding: 0 10px;
+}
+@media (min-width: 768px) {
+    .footer-bottom,
+    .container {
+        width: 750px;
+    }
+    .projects .row .content {
+        width: 50%;
+    }
+    /* 中文网2 这样就脱离文档流 与父级同宽 就独占一行 */
+    .container .navbar-header {
+        float: left;
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .container .navbar-header .navbar-brand {
+        margin-left: -15px;
+        padding-top: 0;
+        padding-bottom: 0;
+        line-height: 42px;
+        height: 42px;
+    }
+    .navbar-header .navbar-toggle {
+        display: none;
+    }
+    /* 、header其余部分 */
+    .navbar-collapse {
+        border-top: 0;
+        box-shadow: none;
+        margin-right: 15px;
+        margin-left: 15px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    .navbar-collapse {
+        display: block !important;
+        height: auto !important;
+        padding-bottom: 0;
+        overflow: visible !important;
+    }
+    .navbar-collapse .navbar-nav {
+        float: left;
+        margin: 0;
+    }
+    .navbar-collapse .navbar-nav>li {
+        float: left;
+    }
+    .navbar .navbar-nav>li>a {
+        font-size: 14px;
+        padding-top: 11px;
+        padding-bottom: 11px;
+    }
+    .navbar-collapse .navbar-nav.navbar-right {
+        float: right !important;
+        margin-right: -15px;
+    }
+    /* masthead部分 */
+    .masthead {
+        padding: 90px 110px;
+    }
+    .masthead h1 {
+        font-size: 90px;
+    }
+    .masthead h2 {
+        font-size: 24px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .hidden-sm {
+        display: none !important;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .footer-bottom,
+    .container {
+        width: 970px;
+    }
+    .projects .row .content {
+        width: 33.33%;
+    }
+    .footer .row .content {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1199px) {
+    .footer-bottom,
+    .container {
+        width: 1170px;
+    }
+    .projects .row .content {
+        width: 25%;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .hidden-md {
+        display: none !important;
+    }
+}

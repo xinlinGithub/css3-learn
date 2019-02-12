@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3d旋转照片墙</title>
+    <style>
+        :root{
+            height: 100%;
+        }
+        body{
+            height: 100%;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+        @keyframes round {
+            from{
+                transform: translate(-50%, -50%) rotateY(0deg);
+            }to{
+                transform: translate(-50%, -50%) rotateY(360deg);
+            }
+        }
+        div.wrap{
+            width: 200px;
+            height: 300px;
+            position: absolute;
+            top: calc(50%);
+            left: calc(50%);
+            transform: translate(-50%, -50%);
+            transform-style: preserve-3d;
+            animation: round 10s linear infinite;
+        }
+        div.wrap > img{
+            position: absolute;
+            width: 100%;
+            /* height: 100%; */
+        }
+        div.wrap > img:nth-of-type(1){
+            transform: rotateY(70deg) translateZ(300px);
+        }
+        div.wrap > img:nth-of-type(2){
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        div.wrap > img:nth-of-type(3){
+            transform: rotateY(120deg) translateZ(350px);
+        }
+        div.wrap > img:nth-of-type(4){
+            transform: rotateY(180deg) translateZ(380px);
+        }
+        div.wrap > img:nth-of-type(5){
+            transform: rotateY(240deg) translateZ(200px);
+        }
+        div.wrap > img:nth-of-type(6){
+            transform: rotateY(270deg) translateZ(500px);
+        }
+        div.wrap > img:nth-of-type(7){
+            transform: rotateY(315deg) translateZ(350px);
+        }
+        div.wrap > img:nth-of-type(8){
+            transform: rotateY(360deg) translateZ(300px);
+            backface-visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- 
+        一旦元素设置上了transform-style: preserve-3d;或 perspective：33px;时 
+        就会自动作为被定位的元素 子集就会相对于他定位
+        backface-visibility：hidden;3d效果时不让看到图片的背面 默认值可以看见
+     -->
+     <div class="wrap">
+         <img src="./timg.jpg" alt="/">
+         <img src="./img/f2.jpg" alt="/">
+         <img src="./img/f3.jpg" alt="/">
+         <img src="./img/f4.jpg" alt="/">
+         <img src="./img/f5.jpg" alt="/">
+         <img src="./img/f6.jpg" alt="/">
+         <img src="./img/f7.jpg" alt="/">
+         <img src="./img/f8.jpg" alt="/">
+     </div>
+
+     <script>
+         document.body.onmousemove = (e) => {
+             document.body.style.perspectiveOrigin = `${e.pageX}px ${e.pageY}px`;
+         }
+     </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>matrix</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .wrap{
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-image: url("./hjh.jpg");
+            background-size: cover; 
+            /* 镜像 */
+            transform: matrix(-2,0,0,1,100,0);
+        }
+        .wrap .center{
+            width: 5px;
+            height: 5px;
+            background-color: black;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="wrap">
+        <div class="center"></div>
+    </div>
+    <!-- 学习知识要迎难而上
+        矩阵：matrix 他就是transform给我们选中的计算规则 只能单独使用 不可与scale等连用
+        也会作用于子集
+        通过计算操作元素上的像素点 使他呈现出我们想要的视觉感
+        3维矩阵操作的是2d平面
+        4维矩阵操作的是3d平面 比较麻烦
+        了解计算规则后可以通过调节不同的传入数据 得到不同的输出结论 这是底层原理
+        |a, b, c|   |x|              |ax+by|
+        |d, e, f| * |y|       =      |dx+ey| => 对像素点进行变换
+        |0, 0, 1|   |1|这一行是固定的 |   1  |
+        通常是根据结论推到转换过程 根据想实现的功能得到 初始公式 从而得到matrix的参数值
+
+        |1, 0, c|   |x|   |x + c |
+        |0, 1, f| * |y| = |y + f | => matrix(1,0,0,1,c,f) => translate2D(c, f);
+        |0, 0, 1|   |1|   |  1   |
+
+        |a, 0, c|   |x|   | ax + c | 
+        |0, e, f| * |y| = | ey + f | => matrix(a,0,0,e,c,f) => scale(x,y) translate(x,y);
+        |0, 0, 1|   |1|   | 1      |
+
+        旋转 3d比较复杂 忽略 学习matrix的主要目的是 通过matrix传值 能实现原来属性实现不了的 简单的效果 
+        比如镜像： |-1,0 ,0|   |x|   |-x|
+                  |0 ,-1,0| * |y| = |-y| => matrix(-1,0,0,-1,0,0) 镜像
+                  |0 , 0,1|   |1|   |0 |
+     -->
+</body>
+</html>

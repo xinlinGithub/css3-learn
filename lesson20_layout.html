@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>layout</title>
+</head>
+<body>
+    
+    <!-- 
+        gpu: 特别适合高精度的浮点数计算 图形绘制能力比CPU高 普遍应用在区块链的算力上 很浪费性能 尽量少用
+        能用gpu就别用CPU
+        浏览器 -> download HTML 
+                ->download css | ->  download js 
+                ->css rules tree | -> domAPI domTree 
+                -> cssrulestree | -> cssomAPI cssomTree
+                -> domtree    |  -> cssomTree
+                ->         renderTree
+                             |
+                             |
+                        layout(布局) -> 由布局paint上色 -> 形成多层的适量图 
+                -> 多层矢量图 -----> 实际绘制(栅格化绘制); gpu 绘图
+
+                layout 涉及到reflow(重排):触发reflow必然会触发repaint 
+                    repaint(重绘)
+                    什么情况下会触发reflow：改变窗口大小
+                                          改变文字大小
+                                          内容改变 输入框输入文字
+                                          激活伪类 ：hover
+                                          操作class属性
+                                          脚本操作DOM：增删改查
+                                          计算offsetWidth和offsetHeight
+                                          设置style
+                                          等改变dom元素结构，样式的操作
+                                          尽量少改dom就少改dom 尽可能减少重构次数
+                每次重排重绘都会执行一下上面的流程 很浪费性能
+                
+                opacity：
+                transform： translate3D() translateZ(); 告诉浏览器 另起一个层进行操作 节省性能
+                will-change: transform;监听要变化的属性 告诉浏览器 对写入的复杂变化单独拿到一个层中去变化；
+                will-change 可以实现gpu加速； 但目前兼容性不是很好；但也不能开启太多层 一般有针对性的去做
+                常用在hover时 在他提前执行的前一刻作用
+                浏览器刷新页面 一秒60次 接近16.7ms一次 如果gpu可以在一帧内执行完动画时 将会很流畅
+
+     -->
+</body>
+</html>

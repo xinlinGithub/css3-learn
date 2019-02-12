@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 将页面大小 根据分辨率不同进行相应的调节 以展示给用户的大小视觉上一致 -->
+    <!-- "width=device-width, initial-scale=1.0 起兼容视口的作用 让元素随视口大小成比例适应 -->
+    <!-- userscalable=no不让用户去操作视口 不能扩大缩放等-->
+    <!-- 用来适配各种不同分辨率的设备 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--第一种引入方式 当视口宽度小于375时展示 -->
+    <link rel="stylesheet" media="screen and (max-width: 375px)" href="index.css">
+    <title>响应式布局</title>
+    <style>
+        /* 第二种引入方式 */
+        @import "index.css" screen and (max-width: 375px);
+        :root{
+            font-size: 20px;
+        }
+        div{
+            margin: 0;
+            padding: 0;
+        }
+        .wrap{
+            width: 60vmax;
+            height: 200px;
+            border: 1px solid green;
+            font-size: 0px;
+        }
+        .wrap .demo{
+            width: 20%;
+            height: 100%;
+            display: inline-block;
+            box-sizing: border-box;
+            border: 1px solid black;
+            font-size: 3rem;
+        }
+        /* 媒体查询不占用权重 看位置 后面的覆盖前面的 一般写到后面 */
+        @media screen and (max-width: 375px) {
+            :root{
+                font-size: 15px;
+            }
+            .wrap{
+                /* width: 300px; */
+                width: 70vw;
+                height: 370px;
+            }
+        }
+        @media screen and (max-width: 200px) and (min-width: 150px){
+            :root{
+                font-size: 14px;
+            }
+            .wrap{
+                /* width: 200px; */
+                width: 80vw;
+                height: 370px;
+            }
+        }
+        /* 如果是或者的关系用,隔开 */
+        /* 还可以表否定not */
+        /* 特指用only */
+        @media screen and (max-width: 150px) {
+            :root{
+                font-size: 10px;
+            }
+            .wrap{
+                /* width: 100px; */
+                width: 90vw;
+                height: 370px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="demo">1</div>
+        <div class="demo">2</div>
+        <div class="demo">3</div>
+        <div class="demo">4</div>
+        <div class="demo">5</div>
+    </div>
+    <!-- 
+        让用户在不同的设备上看不同页面的效果 呈现完美的效果
+        出现了响应式设备：页面布局随页面的大小而改变 一套代码解决几乎所有页面设备的展示问题
+    
+        实现响应式布局：
+            1.流体网格 flex float 实现
+            2.弹性图片 图片宽高不固定
+            3.媒体查询（常用）
+            4.主要断点 设备宽度的临界点
+            大小不同 宽度不同 根据不同宽度展示不同的样式
+        媒体查询：向不同的设备提供不同的样式 
+        三种引入方式：。。。
+        相对单位：
+            rem:默认值为16px 可以设置62.5%为10px 相对于根节点fontSize的大小的多少倍 html标签
+            em: 相对于最近的父级定值
+            可以对于不同的设备设置fontsize值 都用rem表示 这样用于调节字体大小
+            vw,wh:相对于视口而言的 不是设备宽高 因为视口宽高是可以改变的 设备不可改变 一般用在移动端开发 将视口的宽度和高度分成100份 看元素占多少份
+            vmax: 哪个视口大 把那个分成100份；
+            vmin: 哪个小把按个分成100份；
+
+        什么时候选择响应式布局设计：
+            1.想节约成本去适应更多场景
+                与其对不同类型的设备开发多套代码 还不如开发一套响应式的代码去适应所有设备
+            2.不清楚设计的项目具体应用在哪些设备上
+     -->
+</body>
+</html>
